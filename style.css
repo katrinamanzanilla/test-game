@@ -1,0 +1,108 @@
+/* remove default spacing */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  background: black;
+  font-family: Arial, sans-serif;
+}
+
+/* PORTAL BACKGROUND */
+.portal-bg {
+  position: fixed;
+  width: 130%;
+  height: 130%;
+  top: -15%;
+  left: -15%;
+  background: url("portal.png") center/cover no-repeat;
+
+  animation:
+    rotatePortal 60s linear infinite,
+    zoomPortal 12s ease-in-out infinite alternate;
+}
+
+/* ROTATION */
+@keyframes rotatePortal {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* SLOW ZOOM (pulling effect) */
+@keyframes zoomPortal {
+  from { scale: 1; }
+  to { scale: 1.15; }
+}
+
+/* GLOWING CENTER LIGHT */
+.glow {
+  position: fixed;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(255,255,255,0.25), transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: glowPulse 4s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0% { opacity: .4; }
+  50% { opacity: .8; }
+  100% { opacity: .4; }
+}
+
+/* FOG MOVEMENT */
+.fog {
+  position: fixed;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(20,20,30,0.3), transparent 60%);
+  animation: fogMove 40s linear infinite;
+}
+
+@keyframes fogMove {
+  from { transform: translate(-10%, -10%); }
+  to { transform: translate(10%, 10%); }
+}
+
+/* FLOATING DUST PARTICLES */
+.dust {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background-image: radial-gradient(white 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.15;
+  animation: dustFloat 60s linear infinite;
+}
+
+@keyframes dustFloat {
+  from { transform: translateY(0); }
+  to { transform: translateY(-200px); }
+}
+
+/* LOADING TEXT */
+.content {
+  position: relative;
+  z-index: 2;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content h1 {
+  color: #e8e8ff;
+  letter-spacing: 3px;
+  text-shadow: 0 0 20px rgba(150,150,255,0.8);
+  animation: textFade 3s ease-in-out infinite;
+}
+
+/* text fading */
+@keyframes textFade {
+  0% { opacity: .4; }
+  50% { opacity: 1; }
+  100% { opacity: .4; }
+}
