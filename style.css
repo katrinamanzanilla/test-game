@@ -11,27 +11,33 @@ body, html {
 /* PORTAL BACKGROUND */
 .portal-bg {
   position: fixed;
-  width: 130%;
-  height: 130%;
-  top: -15%;
-  left: -15%;
-  background: url("portal.png") center/cover no-repeat;
+  width: 140vmax;
+  height: 140vmax;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  transform-origin: center;
+  background-image:
+    radial-gradient(circle at center, rgba(120, 90, 255, 0.25) 0%, rgba(0, 0, 0, 0.65) 75%),
+    url("https://wallpapers.com/images/hd/coraline-other-world-portal-6zxcq4fom2y1gpxf.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 
-  animation:
-    rotatePortal 60s linear infinite,
-    zoomPortal 12s ease-in-out infinite alternate;
+  animation: portalMotion 18s ease-in-out infinite;
 }
 
-/* ROTATION */
-@keyframes rotatePortal {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-/* SLOW ZOOM (pulling effect) */
-@keyframes zoomPortal {
-  from { scale: 1; }
-  to { scale: 1.15; }
+/* Combined rotation + zoom motion */
+@keyframes portalMotion {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(180deg) scale(1.12);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg) scale(1);
+  }
 }
 
 /* GLOWING CENTER LIGHT */
